@@ -12,7 +12,7 @@ import ru.learning.socialmedia.repository.UserRepository;
 import ru.learning.socialmedia.service.UserService;
 
 import java.util.List;
-
+import java.util.Optional;
 
 
 @Service
@@ -29,13 +29,15 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public UserFullInformation getUserById(long userId) {
-        return userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User with id " + userId + " not found"));
+        Optional<UserFullInformation> oUserFullInformation = userRepository.findById(userId);
+        return oUserFullInformation.orElse(null);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UserLogInResponse logInUser(String username, String passwordHash) {
         UserFullInformation userFullInformation = userRepository.findByUsernameAndPasswordHash(username, passwordHash);
+        if (userFullInformation == null) return null;
         return buildUserLogInResponse(userFullInformation);
     }
 

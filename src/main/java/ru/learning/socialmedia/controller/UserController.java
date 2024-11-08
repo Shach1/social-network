@@ -1,10 +1,8 @@
 package ru.learning.socialmedia.controller;
 
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.learning.socialmedia.entity.UserFullInformation;
 import ru.learning.socialmedia.service.UserService;
 
@@ -21,8 +19,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
-    public UserFullInformation getUserById(@PathVariable() long id) {
+    @GetMapping("/user")
+    public UserFullInformation getUserById(@RequestParam("id") long id) {
+
         return userService.getUserById(id);
     }
 }
