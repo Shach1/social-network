@@ -34,6 +34,11 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
 
+    testImplementation ("io.cucumber:cucumber-java:7.15.0")
+    testImplementation ("io.cucumber:cucumber-spring:7.15.0")
+    testImplementation ("io.cucumber:cucumber-junit:7.15.0")
+    testImplementation ("org.springframework.boot:spring-boot-starter-test")
+
 }
 
 tasks.withType<Test> {
