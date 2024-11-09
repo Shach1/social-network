@@ -1,6 +1,6 @@
 package ru.learning.socialmedia.controller;
 
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,7 @@ import ru.learning.socialmedia.service.UserService;
 @RestController
 @RequestMapping("/api/v1/login")
 @RequiredArgsConstructor
+@Tag(name = "Контроллер авторизации")
 public class LogInController {
     private final UserService userService;
 
